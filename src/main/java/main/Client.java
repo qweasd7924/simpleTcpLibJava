@@ -42,22 +42,15 @@ public class Client {
         }
 
 //        try {
-//            Thread.sleep(500);
+//            Thread.sleep(300);
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
         String resp = "";
-        for (int i = 0; i < 10; i++) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(in.ready());
+        System.out.println(in.ready());
 
-            if (in.ready()) {
-                resp = in.readLine();
-            }
+        if (in.ready()) {
+            resp = in.readLine();
         }
 
         System.out.println(resp + " resp");
@@ -74,7 +67,7 @@ public class Client {
         Client c = new Client();
 
         c.startConnection("192.168.0.110", 2000);
-        System.out.println(c.sendMessage("12321\n"));
+        System.out.println(c.sendMessage("12321"));
 //        c.sendMessage("OK3");
         c.stopConnection();
     }
