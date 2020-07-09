@@ -17,43 +17,21 @@ public class Client {
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             System.out.println("Connection open");
-
         } catch (IOException e) {
             e.printStackTrace();
-//
-//            try {
-//                clientSocket.close();
-//                startConnection(ip,port);
-//            } catch (IOException ioException) {
-//                ioException.printStackTrace();
-//            }
         }
-
     }
 
     public String sendMessage(String msg) throws IOException {
-        if (!out.checkError()){
-            out.println(msg);
-            out.flush();
-            System.out.println(msg + " sended");
+        out.println(msg);
+        out.flush();
+        System.out.println(msg + " sended");
 
-        }else{
-            System.out.println("Has error in stream");
-        }
-
-//        try {
-//            Thread.sleep(300);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
         String resp = "";
-        System.out.println(in.ready());
-
         if (in.ready()) {
             resp = in.readLine();
         }
 
-        System.out.println(resp + " resp");
         return resp;
     }
 
@@ -68,7 +46,6 @@ public class Client {
 
         c.startConnection("192.168.0.110", 2000);
         System.out.println(c.sendMessage("12321"));
-//        c.sendMessage("OK3");
         c.stopConnection();
     }
 }
